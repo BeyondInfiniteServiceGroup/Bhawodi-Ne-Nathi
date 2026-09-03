@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Request a Consultation | Bhawodi ne Nathi</title>
+
+    <meta
+        name="description"
+        content="Discuss your project planning, scheduling, project controls or technical support requirements with Bhawodi ne Nathi."
+    >
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="container nav-container">
+
+        <a href="../" class="brand">
+            <span class="brand-mark">BN</span>
+
+            <span class="brand-text">
+                <strong>Bhawodi ne Nathi</strong>
+                <small>Bopho. Fasa. Qinisa</small>
+            </span>
+        </a>
+
+        <button
+            class="mobile-menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Main navigation">
+
+            <a href="../">Home</a>
+
+            <a href="../about/">About</a>
+
+            <a href="../services/">Services</a>
+
+            <a href="../projects/">Projects</a>
+
+            <a
+                href="../consultation/"
+                class="nav-cta"
+            >
+                Discuss Your Project
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- PAGE HERO -->
+
+    <section class="hero page-hero">
+
+        <div class="container">
+
+            <p class="eyebrow">
+                Start a Conversation
+            </p>
+
+            <h1>
+                Let's discuss your project.
+            </h1>
+
+            <p class="hero-text">
+                Tell us about your project, planning requirements or
+                project controls needs. We'll use the information
+                provided to understand where Bhawodi ne Nathi can add
+                value.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ENQUIRY FORM -->
+
+    <section class="section section-light">
+
+        <div class="container">
+
+            <div class="consultation-grid">
+
+                <div class="consultation-intro">
+
+                    <p class="eyebrow">
+                        Project Enquiry
+                    </p>
+
+                    <h2>
+                        Tell us what you're working on.
+                    </h2>
+
+                    <p>
+                        Whether you're preparing for a project,
+                        strengthening an existing planning function,
+                        or looking for additional project controls
+                        support, provide a few details and we'll take
+                        it from there.
+                    </p>
+
+                    <div class="consultation-points">
+
+                        <div>
+                            <strong>Planning & Scheduling</strong>
+                            <span>
+                                Programme development, updates,
+                                critical path and schedule control.
+                            </span>
+                        </div>
+
+                        <div>
+                            <strong>Project Controls</strong>
+                            <span>
+                                Progress monitoring, reporting,
+                                performance analysis and EVM.
+                            </span>
+                        </div>
+
+                        <div>
+                            <strong>Project Support</strong>
+                            <span>
+                                Construction, engineering and
+                                project execution support.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-wrapper">
+
+                    <form
+                        id="consultation-form"
+                        class="consultation-form"
+                        novalidate
+                    >
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Full Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                                <small class="form-error"></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="company">
+                                    Company
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="company"
+                                    name="company"
+                                    autocomplete="organization"
+                                    required
+                                >
+
+                                <small class="form-error"></small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email Address
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                                <small class="form-error"></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone Number
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    autocomplete="tel"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="service">
+                                Area of Support
+                            </label>
+
+                            <select
+                                id="service"
+                                name="service"
+                                required
+                            >
+
+                                <option value="">
+                                    Select an area
+                                </option>
+
+                                <option value="planning">
+                                    Project Planning & Scheduling
+                                </option>
+
+                                <option value="controls">
+                                    Project Controls & Progress Monitoring
+                                </option>
+
+                                <option value="execution">
+                                    Construction & Project Execution Support
+                                </option>
+
+                                <option value="technical">
+                                    Technical & Engineering Project Support
+                                </option>
+
+                                <option value="other">
+                                    Other / General Enquiry
+                                </option>
+
+                            </select>
+
+                            <small class="form-error"></small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="project">
+                                Tell us about the project
+                            </label>
+
+                            <textarea
+                                id="project"
+                                name="project"
+                                rows="7"
+                                placeholder="Briefly describe the project, its current stage and the support you are looking for."
+                                required
+                            ></textarea>
+
+                            <small class="form-error"></small>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="button button-primary form-submit"
+                        >
+                            Submit Enquiry
+                        </button>
+
+
+                        <div
+                            id="form-status"
+                            class="form-status"
+                            role="status"
+                            aria-live="polite"
+                        ></div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container footer-grid">
+
+        <div>
+
+            <div class="footer-brand">
+                Bhawodi ne Nathi
+            </div>
+
+            <p>
+                Project planning, project controls and technical
+                support for complex industrial projects.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Navigate</h3>
+
+            <a href="../">Home</a>
+            <a href="../about/">About</a>
+            <a href="../services/">Services</a>
+            <a href="../projects/">Projects</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Start a Project</h3>
+
+            <a href="../consultation/">
+                Request a Consultation
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+        <p>
+            © 2026 Bhawodi ne Nathi (Pty) Ltd. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>
