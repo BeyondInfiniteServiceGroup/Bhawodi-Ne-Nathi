@@ -701,9 +701,9 @@ a {
 
     gap: 80px;
 }
-.principal-image {
-    width: 75px;
-    height: 75px;
+.principal-logo {
+    width: 42px;
+    height: 42px;
 
     display: grid;
     place-items: center;
