@@ -701,6 +701,16 @@ a {
 
     gap: 80px;
 }
+.principal-image {
+    width: 75px;
+    height: 75px;
+
+    display: grid;
+    place-items: center;
+
+    font-weight: 800;
+    font-size: 15px;
+}
 
 .principal-initials {
     width: 90px;
