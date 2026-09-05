@@ -377,5 +377,15 @@ document.addEventListener("DOMContentLoaded", () => {
             `form-status ${type}`;
 
     }
+});
 
+document.querySelectorAll('[data-track="developer_referral"]').forEach(link => {
+    link.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+            gtag('event', 'developer_referral_click', {
+                source_site: 'bhawodi_ne_nathi',
+                destination: 'bisg.co.za'
+            });
+        }
+    });
 });
