@@ -149,143 +149,120 @@ document.addEventListener("DOMContentLoaded", () => {
     =========================================
     */
 
-    const form =
-        document.querySelector("#consultation-form");
+    const consultationForm = document.getElementById("consultation-form");
+    const formStatus = document.getElementById("form-status");
 
-    if (form) {
-
-        form.addEventListener("submit", event => {
-
+    if (consultationForm) {
+        consultationForm.addEventListener("submit", async (event) => {
             event.preventDefault();
 
-            clearFormErrors();
+            // Clear previous status
+            formStatus.textContent = "";
+            formStatus.className = "form-status";
 
-            const name =
-                document.querySelector("#name");
+            // Get fields
+            const name = document.getElementById("name");
+            const company = document.getElementById("company");
+            const email = document.getElementById("email");
+            const service = document.getElementById("service");
+            const project = document.getElementById("project");
 
-            const company =
-                document.querySelector("#company");
+            let valid = true;
 
-            const email =
-                document.querySelector("#email");
+            // Clear previous errors
+            consultationForm.querySelectorAll(".form-error").forEach(error => {
+                error.textContent = "";
+            });
 
-            const service =
-                document.querySelector("#service");
-
-            const project =
-                document.querySelector("#project");
-
-            let isValid = true;
-
-
-            /*
-            NAME
-            */
-
-            if (name.value.trim() === "") {
-
-                showFieldError(
-                    name,
-                    "Please enter your name."
-                );
-
-                isValid = false;
-
+            // Validation
+            if (!name.value.trim()) {
+                name.nextElementSibling.textContent = "Please enter your name.";
+                valid = false;
             }
 
-
-            /*
-            COMPANY
-            */
-
-            if (company.value.trim() === "") {
-
-                showFieldError(
-                    company,
-                    "Please enter your company name."
-                );
-
-                isValid = false;
-
+            if (!company.value.trim()) {
+                company.nextElementSibling.textContent = "Please enter your company.";
+                valid = false;
             }
 
-
-            /*
-            EMAIL
-            */
-
-            if (
-                email.value.trim() === "" ||
-                !isValidEmail(email.value.trim())
-            ) {
-
-                showFieldError(
-                    email,
-                    "Please enter a valid email address."
-                );
-
-                isValid = false;
-
+            if (!email.value.trim()) {
+                email.nextElementSibling.textContent = "Please enter your email address.";
+                valid = false;
+            } else if (!email.validity.valid) {
+                email.nextElementSibling.textContent = "Please enter a valid email address.";
+                valid = false;
             }
 
-
-            /*
-            SERVICE
-            */
-
-            if (service.value === "") {
-
-                showFieldError(
-                    service,
-                    "Please select an area of support."
-                );
-
-                isValid = false;
-
+            if (!service.value) {
+                service.nextElementSibling.textContent = "Please select an area of support.";
+                valid = false;
             }
 
-
-            /*
-            PROJECT
-            */
-
-            if (project.value.trim() === "") {
-
-                showFieldError(
-                    project,
-                    "Please tell us a little about your project."
-                );
-
-                isValid = false;
-
+            if (!project.value.trim()) {
+                project.nextElementSibling.textContent = "Please tell us about the project.";
+                valid = false;
             }
 
-
-            if (!isValid) {
-
-                showFormStatus(
-                    "Please review the highlighted fields.",
-                    "error"
-                );
-
+            // Stop if validation failed
+            if (!valid) {
+                formStatus.textContent = "Please correct the highlighted fields.";
+                formStatus.classList.add("error");
                 return;
-
             }
 
+            // Disable button while submitting
+            const submitButton = consultationForm.querySelector(".form-submit");
+            const originalButtonText = submitButton.textContent;
 
-            /*
-            TEMPORARY SUCCESS STATE
-            */
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
 
-            showFormStatus(
-                "Thank you. Your enquiry has been captured and we'll be in touch.",
-                "success"
-            );
+            try {
+                const response = await fetch(consultationForm.action, {
+                    method: "POST",
+                    body: new FormData(consultationForm),
+                    headers: {
+                        Accept: "application/json"
+                    }
+                });
 
-            form.reset();
+                if (response.ok) {
 
+                    // GA4 lead event
+                    if (typeof gtag === "function") {
+                        gtag("event", "generate_lead", {
+                            form_name: "consultation_form",
+                            page_path: window.location.pathname
+                        });
+                    }
+
+                    formStatus.textContent =
+                        "Thank you. Your enquiry has been received. We will be in touch shortly.";
+
+                    formStatus.classList.add("success");
+
+                    consultationForm.reset();
+
+                } else {
+                    throw new Error("Form submission failed.");
+                }
+
+            } catch (error) {
+
+                console.error("Formspree submission error:", error);
+
+                formStatus.textContent =
+                    "Something went wrong while sending your enquiry. Please try again.";
+
+                formStatus.classList.add("error");
+
+            } finally {
+
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+
+            }
         });
-
     }
 
 
